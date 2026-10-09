@@ -1,0 +1,17 @@
+{
+  "name": "线上游园会 · Online Fun Fair",
+  "short_name": "游园会",
+  "description": "华语派对游戏大厅：谁是卧底、你说我猜、阿瓦隆等，朋友们各用自己的手机一起玩。",
+  "lang": "zh-Hans",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0D080B",
+  "theme_color": "#0D080B",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
