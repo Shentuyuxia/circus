@@ -1121,7 +1121,7 @@ let HOWINIT = false;
 function howSeen(){ try{ return localStorage.getItem("fair-how-seen") === "1"; }catch(e){ return false; } }
 function markHowSeen(){ try{ localStorage.setItem("fair-how-seen","1"); }catch(e){} }
 function applyStage(){
-  if(!HOWINIT){ HOWINIT = true; $("howBox").open = !howSeen(); $("langBox").open = !howSeen(); $("langBox").addEventListener("toggle", () => { if(!$("langBox").open) markHowSeen(); }); $("toggles").addEventListener("click", () => markHowSeen()); $("howBox").addEventListener("toggle", () => { if(!$("howBox").open) markHowSeen(); }); }
+  if(!HOWINIT){ HOWINIT = true; $("howBox").open = !howSeen(); $("langBox").open = !howSeen(); $("langBox").addEventListener("toggle", () => { if(!$("langBox").open) markHowSeen(); }); let langT = 0; $("toggles").addEventListener("click", e => { if(!e.target.closest("button")) return; markHowSeen(); clearTimeout(langT); langT = setTimeout(() => { $("langBox").open = false; }, 3500); }); $("howBox").addEventListener("toggle", () => { if(!$("howBox").open) markHowSeen(); }); }
   $("hall").dataset.stage = STAGE; $("hall").dataset.tab = TAB;
   document.body.dataset.stage = STAGE;
   document.querySelectorAll("#tabbar .tab[data-v]").forEach(b => b.setAttribute("aria-current", b.dataset.v === TAB ? "page" : "false"));
