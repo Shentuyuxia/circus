@@ -713,6 +713,13 @@ footer .ainote{margin:0}
 #howBox>summary{min-height:36px}
 #howBox>summary{pointer-events:auto;cursor:pointer}
 .dock #howBox>summary::after{display:block}
+.dock #langBox>summary{pointer-events:auto;cursor:pointer}
+.dock #langBox>summary::after{display:block}
+.dock #langBox:not([open])>summary .fs{display:block}
+.dock #langBox[open]>summary .fs{display:none}
+.dock #langBox>summary .fs{font-size:14px;font-weight:700;color:var(--ink);opacity:.85}
+.s2e{font-size:11.5px!important;opacity:.85!important;color:var(--ink)}
+.seg2 button[aria-checked="true"] .s2e{color:var(--jade);opacity:1!important}
 </style>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="5"/></filter><filter id="roughT" x="-3%" y="-8%" width="106%" height="116%"><feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="2" seed="9" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="1.6"/></filter><filter id="roughS" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="5" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="2.5"/></filter></defs></svg>
@@ -1114,10 +1121,9 @@ let HOWINIT = false;
 function howSeen(){ try{ return localStorage.getItem("fair-how-seen") === "1"; }catch(e){ return false; } }
 function markHowSeen(){ try{ localStorage.setItem("fair-how-seen","1"); }catch(e){} }
 function applyStage(){
-  if(!HOWINIT){ HOWINIT = true; $("howBox").open = !howSeen(); $("howBox").addEventListener("toggle", () => { if(!$("howBox").open) markHowSeen(); }); }
+  if(!HOWINIT){ HOWINIT = true; $("howBox").open = !howSeen(); $("langBox").open = !howSeen(); $("langBox").addEventListener("toggle", () => { if(!$("langBox").open) markHowSeen(); }); $("toggles").addEventListener("click", () => markHowSeen()); $("howBox").addEventListener("toggle", () => { if(!$("howBox").open) markHowSeen(); }); }
   $("hall").dataset.stage = STAGE; $("hall").dataset.tab = TAB;
   document.body.dataset.stage = STAGE;
-  $("langBox").open = true;
   document.querySelectorAll("#tabbar .tab[data-v]").forEach(b => b.setAttribute("aria-current", b.dataset.v === TAB ? "page" : "false"));
 }
 const TABICON = {
