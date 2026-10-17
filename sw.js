@@ -1,8 +1,8 @@
 // Offline support: serve the app and word lists from cache, refresh them in the background.
-const CACHE = "palavra-wort-v7";
+const CACHE = "youyuanhui-v1";
 const SHELL = [
   "./", "./index.html", "./manifest.webmanifest",
-  "./icon.svg", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./favicon-32.png"
+  "./icon.svg", "./icon-192.png", "./icon-512.png", "./tent-180.png", "./tent-192.png"
 ];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => null)))).then(() => self.skipWaiting()));
