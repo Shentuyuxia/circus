@@ -1111,7 +1111,7 @@ function renderAltar(TT){
 }
 const AI_NOTE = ["翻译由 AI 支持","翻譯由 AI 支援","Übersetzungen mit KI-Unterstützung","Traduções feitas com apoio de IA","Translations powered by AI"];
 // Copyright line in the footer: [simplified, traditional, English, German, Portuguese]
-const COPY_NOTE = ["© 2026 申屠余夏 Shentu Yuxia · 设计与内容版权所有，禁止商业使用 · 联络：emo_yuan@outlook.com","© 2026 申屠余夏 Shentu Yuxia · 設計與內容版權所有，禁止商業使用 · 聯絡：emo_yuan@outlook.com","All rights reserved. No commercial use.","Alle Rechte vorbehalten. Keine kommerzielle Nutzung.","Todos os direitos reservados. Proibido o uso comercial."];
+const CONTACT = "emo_yuan@outlook.com";
 function renderTop(){
   const cur = P.witch ? "witch" : P.day ? "day" : "fair", nm = {fair:T.fair, day:T.day, witch:T.witch};
   const sz = ["14px","17px","21px"][P.fs] || "14px";
@@ -1182,7 +1182,7 @@ function renderHall(){
       </span>
     </button><button type="button" class="ginfo ${g.c}" data-act="info" data-v="${g.id}" aria-expanded="${open}" aria-label="Info">i</button>${open ? `<div class="gfull ${g.c}">${bi(g.desc)}</div>` : ""}</div>`;
   }).join("");
-  $("foot").innerHTML = `<p class="ainote">${esc(P.trad ? TT.foot[1] : TT.foot[0])} ${esc(enOf(TT.foot))} · ${esc(AI_NOTE[P.trad ? 1 : P.de ? 2 : P.pt ? 3 : 0])}</p>` + `<p class="ainote">${esc(COPY_NOTE[P.trad ? 1 : 0])} · ${esc(COPY_NOTE[P.de ? 3 : P.pt ? 4 : 2])}</p>`;
+  $("foot").innerHTML = `<p class="ainote">${esc(P.trad ? TT.foot[1] : TT.foot[0])} ${esc(enOf(TT.foot))} · AI-assisted translations</p>` + `<p class="ainote">© 2026 Shentu Yuxia · No commercial use · <a href="mailto:${CONTACT}" style="color:inherit">${CONTACT}</a></p>`;
   renderAltar(TT);
 }
 
