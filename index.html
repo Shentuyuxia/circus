@@ -1187,7 +1187,7 @@ function renderHall(){
       </span>
     </button><button type="button" class="ginfo ${g.c}" data-act="info" data-v="${g.id}" aria-expanded="${open}" aria-label="Info">i</button>${open ? `<div class="gfull ${g.c}">${bi(g.desc)}</div>` : ""}</div>`;
   }).join("");
-  $("foot").innerHTML = `<p class="ainote">${esc(P.trad ? TT.foot[1] : TT.foot[0])} ${esc(enOf(TT.foot))} · AI-assisted translations</p>` + `<div class="fbar"><span>© 2026 Shentu Yuxia · Non-commercial</span><nav class="flinks" aria-label="Links"><a href="https://github.com/shentuyuxia" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></a><a href="mailto:${CONTACT}" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></nav></div>`;
+  $("foot").innerHTML = `<p class="ainote">${esc(P.trad ? TT.foot[1] : TT.foot[0])} ${esc(enOf(TT.foot))} · AI-assisted translations</p>` + `<div class="fbar"><span>© 2026 Online Fun Fair · Non-commercial use only</span><nav class="flinks" aria-label="Links"><a href="mailto:${CONTACT}" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></nav></div>`;
   renderAltar(TT);
 }
 
