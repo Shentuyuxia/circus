@@ -158,6 +158,11 @@ html.py .gname .zh{line-height:1.9}
 footer{margin-top:32px;text-align:center;font-size:12px;color:var(--muted)}
 footer .bi{align-items:center}
 footer .ainote{margin:8px 0 0;font-size:11.5px;opacity:.75}
+footer .fbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--latin);font-size:12.5px;letter-spacing:.02em;text-align:left}
+footer .flinks{display:flex;gap:4px;margin-left:auto}
+footer .flinks a{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;color:var(--muted);transition:color .2s,background-color .2s}
+footer .flinks a:hover,footer .flinks a:focus-visible{color:var(--ink);background-color:color-mix(in srgb,var(--ink) 9%,transparent)}
+footer .flinks svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- playing a game ---------- */
 #play{display:none;position:fixed;inset:0;flex-direction:column;background:var(--paper)}
@@ -1111,7 +1116,7 @@ function renderAltar(TT){
 }
 const AI_NOTE = ["翻译由 AI 支持","翻譯由 AI 支援","Übersetzungen mit KI-Unterstützung","Traduções feitas com apoio de IA","Translations powered by AI"];
 // Copyright line in the footer: [simplified, traditional, English, German, Portuguese]
-const CONTACT = "emo_yuan@outlook.com";
+const CONTACT = ["emo_yuan", "outlook.com"].join("@");  // split so simple scrapers miss it
 function renderTop(){
   const cur = P.witch ? "witch" : P.day ? "day" : "fair", nm = {fair:T.fair, day:T.day, witch:T.witch};
   const sz = ["14px","17px","21px"][P.fs] || "14px";
@@ -1182,7 +1187,7 @@ function renderHall(){
       </span>
     </button><button type="button" class="ginfo ${g.c}" data-act="info" data-v="${g.id}" aria-expanded="${open}" aria-label="Info">i</button>${open ? `<div class="gfull ${g.c}">${bi(g.desc)}</div>` : ""}</div>`;
   }).join("");
-  $("foot").innerHTML = `<p class="ainote">${esc(P.trad ? TT.foot[1] : TT.foot[0])} ${esc(enOf(TT.foot))} · AI-assisted translations</p>` + `<p class="ainote">© 2026 Shentu Yuxia · No commercial use · <a href="mailto:${CONTACT}" style="color:inherit">${CONTACT}</a></p>`;
+  $("foot").innerHTML = `<p class="ainote">${esc(P.trad ? TT.foot[1] : TT.foot[0])} ${esc(enOf(TT.foot))} · AI-assisted translations</p>` + `<div class="fbar"><span>© 2026 Shentu Yuxia · Non-commercial</span><nav class="flinks" aria-label="Links"><a href="https://github.com/shentuyuxia" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></a><a href="mailto:${CONTACT}" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></nav></div>`;
   renderAltar(TT);
 }
 
